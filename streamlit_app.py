@@ -5,9 +5,7 @@ from models.decision_tree_model import run_decision_tree
 from models.knn_model import run_knn
 from models.naive_bayes_model import run_naive_bayes
 from models.random_forest_model import run_random_forest
-
-
-
+from models.xgboost_model import run_xgboost
 
 st.set_page_config(page_title="ML Assignment 2", layout="wide")
 st.title("Adult Income Classification")
@@ -54,6 +52,10 @@ elif model_choice == "Naive Bayes Classifier":
 elif model_choice == "Ensemble Model - Random Forest":
     st.subheader("Ensemble Model - Random Forest")
     results = run_random_forest(X_train, X_test, y_train, y_test)
+elif model_choice == "Ensemble Model - XGBoost":
+    st.subheader("Ensemble Model - XGBoost")
+    results = run_xgboost(X_train, X_test, y_train, y_test)
+
     
 # Display Metrics
 
