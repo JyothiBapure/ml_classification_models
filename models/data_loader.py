@@ -14,7 +14,7 @@ def load_and_preprocess_data(uploaded_test_file=None):
 
     # Load training data
     data = pd.read_csv(
-        "adult.data",
+        "data/adult.data",
         header=None,
         names=columns,
         na_values=" ?",
