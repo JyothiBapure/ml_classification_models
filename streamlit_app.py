@@ -10,7 +10,7 @@ st.title("Adult Income Classification")
 st.sidebar.header("Upload Test Data")
 uploaded_test_file = st.sidebar.file_uploader(
     "Upload Test CSV (Optional)",
-    type=["csv"]
+    type=["csv", "test"]
 )
 
 st.sidebar.markdown(
