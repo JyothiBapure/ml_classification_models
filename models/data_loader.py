@@ -73,4 +73,7 @@ def load_and_preprocess_data(uploaded_test_file=None):
 
     # Scaling
     scaler = StandardScaler()
-    X_train = scaler.fit_tran
+    X_train = scaler.fit_transform(X_train)
+    X_test = scaler.transform(X_test)
+
+    return X_train, X_test, y_train, y_test
