@@ -14,7 +14,7 @@ def load_and_preprocess_data(uploaded_test_file=None):
 
     # Load training data
     data = pd.read_csv(
-        "data/adult.data",
+        "adult.data",
         header=None,
         names=columns,
         na_values=" ?",
@@ -23,9 +23,9 @@ def load_and_preprocess_data(uploaded_test_file=None):
 
     data.dropna(inplace=True)
 
-    # Encoding
     label_encoders = {}
 
+    # Encode training data
     for col in data.columns:
         if data[col].dtype == "object":
             le = LabelEncoder()
@@ -35,19 +35,26 @@ def load_and_preprocess_data(uploaded_test_file=None):
     X = data.drop("income", axis=1)
     y = data["income"]
 
-    # If test file uploaded
+    # ==========================
+    # TEST FILE HANDLING FIX
+    # ==========================
     if uploaded_test_file is not None:
 
         test_data = pd.read_csv(
             uploaded_test_file,
             header=None,
             names=columns,
+            skiprows=1,   # IMPORTANT FIX
             na_values=" ?",
             skipinitialspace=True
         )
 
         test_data.dropna(inplace=True)
 
+        # Remove trailing dot in income column
+        test_data["income"] = test_data["income"].str.replace(".", "", regex=False)
+
+        # Encode using same encoders
         for col in test_data.columns:
             if test_data[col].dtype == "object":
                 test_data[col] = label_encoders[col].transform(test_data[col])
@@ -66,7 +73,4 @@ def load_and_preprocess_data(uploaded_test_file=None):
 
     # Scaling
     scaler = StandardScaler()
-    X_train = scaler.fit_transform(X_train)
-    X_test = scaler.transform(X_test)
-
-    return X_train, X_test, y_train, y_test
+    X_train = scaler.fit_tran
