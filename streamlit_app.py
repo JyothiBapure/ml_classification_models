@@ -4,6 +4,8 @@ from models.logistic_regression_model import run_logistic_regression
 from models.decision_tree_model import run_decision_tree
 from models.knn_model import run_knn
 from models.naive_bayes_model import run_naive_bayes
+from models.random_forest_model import run_random_forest
+
 
 
 
@@ -49,6 +51,9 @@ elif model_choice == "K-Nearest Neighbor Classifier":
 elif model_choice == "Naive Bayes Classifier":
     st.subheader("Naive Bayes Classifier")
     results = run_naive_bayes(X_train, X_test, y_train, y_test)
+elif model_choice == "Ensemble Model - Random Forest":
+    st.subheader("Ensemble Model - Random Forest")
+    results = run_random_forest(X_train, X_test, y_train, y_test)
     
 # Display Metrics
 
