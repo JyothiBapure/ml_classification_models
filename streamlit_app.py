@@ -3,6 +3,7 @@ from models.data_loader import load_and_preprocess_data
 from models.logistic_regression_model import run_logistic_regression
 from models.decision_tree_model import run_decision_tree
 from models.knn_model import run_knn
+from models.naive_bayes_model import run_naive_bayes
 
 
 
@@ -43,7 +44,11 @@ elif model_choice == "Decision Tree Classifier":
     st.subheader("Decision Tree Classifier")
     results = run_decision_tree(X_train, X_test, y_train, y_test)
 elif model_choice == "K-Nearest Neighbor Classifier":
+    st.subheader("K-Nearest Neighbor Classifier")
     results = run_knn(X_train, X_test, y_train, y_test)
+elif model_choice == "Naive Bayes Classifier":
+    st.subheader("Naive Bayes Classifier")
+    results = run_naive_bayes(X_train, X_test, y_train, y_test)
     
 # Display Metrics
 
