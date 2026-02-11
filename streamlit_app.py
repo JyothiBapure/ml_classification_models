@@ -33,14 +33,18 @@ model_choice = st.selectbox(
     )
 )
 # Run Model
+results = None
+
 if model_choice == "Logistic Regression":
+    st.subheader("Logistic Regression Results")
     results = run_logistic_regression(X_train, X_test, y_train, y_test)
 
-elif model_choice == "Decision Tree":
+elif model_choice == "Decision Tree Classifier":
+    st.subheader("Decision Tree Classifier")
     results = run_decision_tree(X_train, X_test, y_train, y_test)
 
 # Display Metrics
-st.subheader("Logistic Regression Results")
+
 
 col1, col2, col3 = st.columns(3)
 col1.metric("Accuracy", f"{results['accuracy']:.4f}")
