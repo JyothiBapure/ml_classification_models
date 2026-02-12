@@ -1,9 +1,9 @@
-Problem Statement
+a). Problem Statement
 
 This project implements 6 ML classifiers to Predict whether an individual earns more than $50K per year based on demographic and work-related features 
 such as age, education, occupation, and hours worked per week. This prediction is useful for economic studies, policy making, and financial planning
 
-Dataset Description
+b). Dataset Description
 
 The dataset used in this project is the Adult Income Dataset from the UCI Machine Learning Repository.
 Total Instances: ~48,000 records
@@ -28,7 +28,7 @@ Target Variable: income
 | hours-per-week | Working hours per week    |
 | native-country | Country of origin         |
 
-Models Used
+c). Models Used
 
 The following six machine learning models were implemented and evaluated using the same preprocessing pipeline to ensure fair comparison:
 
