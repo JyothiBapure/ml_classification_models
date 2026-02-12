@@ -104,7 +104,7 @@ filtered_report = {k: v for k, v in results.items() if isinstance(v, dict)}
 report_df = pd.DataFrame.from_dict(filtered_report, orient="index")
 
 # Add accuracy row safely
-if "accuracy" in report:
+if "accuracy" in results:
     report_df.loc["accuracy", "precision"] = results["accuracy"]
     report_df.loc["accuracy", "recall"] = np.nan
     report_df.loc["accuracy", "f1-score"] = np.nan
