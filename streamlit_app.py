@@ -100,17 +100,12 @@ st.write(results["confusion_matrix"])
 #st.text(results["classification_report"])
 # Display classification report
 st.subheader("Classification Report")
-filtered_report = {k: v for k, v in results.items() if isinstance(v, dict)}
-report_df = pd.DataFrame.from_dict(filtered_report, orient="index")
+report_dict = results["classification_report"]
 
-# Add accuracy row safely
-if "accuracy" in results:
-    report_df.loc["accuracy", "precision"] = results["accuracy"]
-    report_df.loc["accuracy", "recall"] = np.nan
-    report_df.loc["accuracy", "f1-score"] = np.nan
-    report_df.loc["accuracy", "support"] = np.nan
+# Convert to DataFrame
+report_df = pd.DataFrame(report_dict).transpose()
 
-# Ensure numeric types and round
-report_df = report_df[["precision", "recall", "f1-score", "support"]].astype(float).round(4)
+# Round values safely
+report_df = report_df.round(4)
 
-st.dataframe(report_df, width="stretch")
+st.dataframe(report_df, use_container_width=True)
