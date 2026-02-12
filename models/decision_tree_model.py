@@ -30,7 +30,7 @@ def run_decision_tree(X_train, X_test, y_train, y_test):
         "f1": f1_score(y_test, y_pred),
         "mcc": matthews_corrcoef(y_test, y_pred),
         "confusion_matrix": confusion_matrix(y_test, y_pred),
-        "classification_report": classification_report(y_test, y_pred)
+        "classification_report": classification_report(y_test, y_pred, output_dict=True)
     }
 
     return results
