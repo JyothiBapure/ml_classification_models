@@ -53,6 +53,7 @@ if uploaded_test_file is not None:
 
     st.subheader("Preview of Uploaded Test Data")
     st.dataframe(df_preview.head(), use_container_width=True)
+    uploaded_test_file.seek(0)
 
 # Load data
 X_train, X_test, y_train, y_test = load_and_preprocess_data(uploaded_test_file)
