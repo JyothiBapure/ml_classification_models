@@ -38,9 +38,9 @@ uploaded_test_file = st.sidebar.file_uploader(
     type=["csv", "test"]
 )
 
-st.sidebar.markdown(
-    "If no test file is uploaded, data will be split automatically."
-)
+#st.sidebar.markdown(
+#    "If no test file is uploaded, data will be split automatically."
+#)
 
 # Load data
 X_train, X_test, y_train, y_test = load_and_preprocess_data(uploaded_test_file)
@@ -95,17 +95,12 @@ col6.metric("MCC", f"{results['mcc']:.4f}")
 st.subheader("Confusion Matrix")
 st.write(results["confusion_matrix"])
 
-# Classification Report
-#st.subheader("Classification Report")
-#st.text(results["classification_report"])
 # Display classification report
 st.subheader("Classification Report")
 report_dict = results["classification_report"]
 
 # Convert to DataFrame
 report_df = pd.DataFrame(report_dict).transpose()
-
-# Round values safely
 report_df = report_df.round(4)
 
 st.dataframe(report_df, use_container_width=True)
