@@ -41,6 +41,14 @@ uploaded_test_file = st.sidebar.file_uploader(
 #st.sidebar.markdown(
 #    "If no test file is uploaded, data will be split automatically."
 #)
+if uploaded_test_file is not None:
+    st.success("Using uploaded test dataset")
+
+    # Read file for preview
+    df_preview = pd.read_csv(uploaded_test_file, header=None)
+
+    st.subheader("Preview of Uploaded Test Data")
+    st.dataframe(df_preview.head(), use_container_width=True)
 
 # Load data
 X_train, X_test, y_train, y_test = load_and_preprocess_data(uploaded_test_file)
