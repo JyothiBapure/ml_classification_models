@@ -38,10 +38,6 @@ uploaded_test_file = st.sidebar.file_uploader(
     type=["csv", "test"]
 )
 
-if uploaded_test_file:
-    st.success("Using uploaded test dataset")
-else:
-    st.info("Using internal train-test split")
 #st.sidebar.markdown(
 #    "If no test file is uploaded, data will be split automatically."
 #)
@@ -63,22 +59,40 @@ model_choice = st.selectbox(
 results = None
 
 if model_choice == "Logistic Regression":
-    st.subheader("Running evaluation for Logistic Regression")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for Logistic Regression on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for Logistic Regression")
     results = run_logistic_regression(X_train, X_test, y_train, y_test)
 elif model_choice == "Decision Tree Classifier":
-    st.subheader("Running evaluation for Decision Tree Classifier")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for Decision Tree Classifier on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for Decision Tree Classifier")
     results = run_decision_tree(X_train, X_test, y_train, y_test)
 elif model_choice == "K-Nearest Neighbor Classifier":
-    st.subheader("Running evaluation for K-Nearest Neighbor Classifier")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for K-Nearest Neighbor Classifier on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for K-Nearest Neighbor Classifier")
     results = run_knn(X_train, X_test, y_train, y_test)
 elif model_choice == "Naive Bayes Classifier":
-    st.subheader("Running evaluation for Naive Bayes Classifier")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for Naive Bayes Classifier on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for Naive Bayes Classifier")
     results = run_naive_bayes(X_train, X_test, y_train, y_test)
 elif model_choice == "Ensemble Model - Random Forest":
-    st.subheader("Running evaluation for Ensemble Model - Random Forest")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for Ensemble Model - Random Forest on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for Ensemble Model - Random Forest")
     results = run_random_forest(X_train, X_test, y_train, y_test)
 elif model_choice == "Ensemble Model - XGBoost":
-    st.subheader("Running evaluation for Ensemble Model - XGBoost")
+    if uploaded_test_file:
+        st.subheader("Running evaluation for Ensemble Model - XGBoost on uploaded test dataset")
+    else:
+        st.subheader("Running evaluation for Ensemble Model - XGBoost")
     results = run_xgboost(X_train, X_test, y_train, y_test)
 
     
