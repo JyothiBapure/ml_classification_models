@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+import numpy as np
 from models.data_loader import load_and_preprocess_data
 from models.logistic_regression_model import run_logistic_regression
 from models.decision_tree_model import run_decision_tree
