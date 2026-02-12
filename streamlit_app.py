@@ -34,7 +34,7 @@ except FileNotFoundError:
 # Sidebar
 st.sidebar.header("Upload Test Data")
 uploaded_test_file = st.sidebar.file_uploader(
-    #"Upload Test file",
+    "Upload Test file",
     type=["csv", "test"]
 )
 
