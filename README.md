@@ -39,9 +39,9 @@ Naive Bayes (Gaussian)
 Random Forest Classifier
 XGBoost Classifier
 
-Comparison Table with the evaluation metrics calculated for all the 6 models
+Comparison Table with the evaluation metrics calculated for all the 6 models on test dataset
 
-| ML Model            | Accuracy   | AUC        | Precision  | Recall     | F1 Score   | MCC        |
+| ML Model Name       | Accuracy   | AUC        | Precision  | Recall     | F1 Score   | MCC        |
 | ------------------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
 | Logistic Regression | 0.8245     | 0.8509     | 0.7014     | 0.4477     | 0.5466     | 0.4615     |
 | Decision Tree       | 0.8093     | 0.7391     | 0.5946     | 0.6061     | 0.6003     | 0.4752     |
@@ -54,10 +54,10 @@ Observations on the performance of each model on the chosen dataset.
 
 | ML Model                  | Observation about Model Performance                                                                                                                                                                                                 |
 | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Logistic Regression       | Provides stable and consistent performance with good AUC and precision. However, recall is relatively lower, indicating that the model misses a portion of high-income instances. Generalizes well without significant overfitting. |
-| Decision Tree             | Captures nonlinear relationships effectively and provides balanced recall. Slightly lower AUC compared to other models. Performance remains stable across training and test data.                                                   |
-| K-Nearest Neighbors (KNN) | Demonstrates balanced precision and recall with consistent performance across datasets. Distance-based learning works effectively after feature scaling. Shows good generalization ability.                                         |
-| Naive Bayes               | Achieves good AUC and precision but lower recall and F1-score. The independence assumption limits its ability to model complex feature interactions. Performance remains stable without overfitting.                                |
+| Logistic Regression       | Gives good accuracy and stable results. It works well but misses some high-income cases. Generalizes well without significant overfitting. |
+| Decision Tree             | Gives decent accuracy and identifies many high-income cases. Slightly lower AUC compared to other models. Performance remains stable across training and test data.                                                   |
+| K-Nearest Neighbors (KNN) | Gives balanced precision and recall with consistent performance across datasets. Distance-based learning works effectively after feature scaling. Shows good generalization ability.                                         |
+| Naive Bayes               | Achieves good AUC and precision but lower recall and F1-score. Misses many high-income cases compared to other models. Performance remains stable without overfitting.                                |
 | Random Forest (Ensemble)  | Shows strong overall predictive performance with high accuracy and AUC. Effectively captures complex feature interactions. Maintains balanced precision and recall with stable generalization.                                      |
 | XGBoost (Ensemble)        | Delivers the best overall performance across most evaluation metrics. Achieves high accuracy, AUC, F1-score, and MCC. Demonstrates strong predictive capability and excellent generalization.                                       |
 
