@@ -35,16 +35,14 @@ def load_and_preprocess_data(uploaded_test_file=None):
     X = data.drop("income", axis=1)
     y = data["income"]
 
-    # ==========================
-    # TEST FILE HANDLING FIX
-    # ==========================
+    
+    # TEST FILE HANDLING
     if uploaded_test_file is not None:
-
         test_data = pd.read_csv(
             uploaded_test_file,
             header=None,
             names=columns,
-            skiprows=1,   # IMPORTANT FIX
+            skiprows=1,
             na_values=" ?",
             skipinitialspace=True
         )
