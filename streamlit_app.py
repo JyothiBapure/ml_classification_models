@@ -38,6 +38,10 @@ uploaded_test_file = st.sidebar.file_uploader(
     type=["csv", "test"]
 )
 
+if uploaded_test_file:
+    st.success("Using uploaded test dataset")
+else:
+    st.info("Using internal train-test split")
 #st.sidebar.markdown(
 #    "If no test file is uploaded, data will be split automatically."
 #)
