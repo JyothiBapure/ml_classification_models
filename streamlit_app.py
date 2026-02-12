@@ -45,7 +45,11 @@ if uploaded_test_file is not None:
     st.success("Using uploaded test dataset")
 
     # Read file for preview
-    df_preview = pd.read_csv(uploaded_test_file, header=None)
+    df_preview = pd.read_csv(
+        uploaded_test_file,
+        header=None,
+        skiprows=1
+    )
 
     st.subheader("Preview of Uploaded Test Data")
     st.dataframe(df_preview.head(), use_container_width=True)
