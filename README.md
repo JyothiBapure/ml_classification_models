@@ -41,14 +41,14 @@ XGBoost Classifier
 
 Comparison Table with the evaluation metrics calculated for all the 6 models on test dataset
 
-| ML Model Name       | Accuracy   | AUC        | Precision  | Recall     | F1 Score   | MCC        |
-| ------------------- | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
-| Logistic Regression | 0.8245     | 0.8509     | 0.7014     | 0.4477     | 0.5466     | 0.4615     |
-| Decision Tree       | 0.8093     | 0.7391     | 0.5946     | 0.6061     | 0.6003     | 0.4752     |
-| KNN                 | 0.8286     | 0.8492     | 0.6566     | 0.5751     | 0.6132     | 0.5055     |
-| Naive Bayes         | 0.8039     | 0.8556     | 0.6723     | 0.3318     | 0.4443     | 0.3729     |
-| Random Forest       | 0.8531     | 0.9051     | 0.7257     | 0.6082     | 0.6618     | 0.5725     |
-| XGBoost             | 0.8722     | 0.9265     | 0.7800     | 0.6396     | 0.7029     | 0.6275     |
+| ML Model Name             | Accuracy   | AUC        | Precision  | Recall     | F1 Score   | MCC        |
+| -------------------       | ---------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| Logistic Regression       | 0.8245     | 0.8509     | 0.7014     | 0.4477     | 0.5466     | 0.4615     |
+| Decision Tree             | 0.8093     | 0.7391     | 0.5946     | 0.6061     | 0.6003     | 0.4752     |
+| KNN                       | 0.8286     | 0.8492     | 0.6566     | 0.5751     | 0.6132     | 0.5055     |
+| Naive Bayes               | 0.8039     | 0.8556     | 0.6723     | 0.3318     | 0.4443     | 0.3729     |
+| Random Forest (Ensemble)  | 0.8531     | 0.9051     | 0.7257     | 0.6082     | 0.6618     | 0.5725     |
+| XGBoost (Ensemble)        | 0.8722     | 0.9265     | 0.7800     | 0.6396     | 0.7029     | 0.6275     |
 
 Observations on the performance of each model on the chosen dataset.
 
