@@ -31,7 +31,9 @@ try:
         mime="text/csv"
     )
 
-    run_models = False
+    if download_clicked:
+        run_models = False
+        
 except FileNotFoundError:
     st.warning("Test dataset not found in repository.")
 
