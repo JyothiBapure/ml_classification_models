@@ -28,6 +28,8 @@ try:
         file_name="adult.test",
         mime="text/csv"
     )
+
+    st.stop()
 except FileNotFoundError:
     st.warning("Test dataset not found in repository.")
 
