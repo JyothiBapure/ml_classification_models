@@ -18,13 +18,14 @@ st.markdown("""
 """)
 
 run_models = True
+download_clicked = False
 
 st.sidebar.subheader("Download Test Dataset")
 try:
     with open("data/adult.test", "rb") as f:
         adult_test_bytes = f.read()
 
-    st.sidebar.download_button(
+    download_clicked = st.sidebar.download_button(
         label="Download adult.test data",
         data=adult_test_bytes,
         file_name="adult.test",
