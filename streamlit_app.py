@@ -17,6 +17,8 @@ st.markdown("""
 * If a test file is uploaded, evaluation will run on the uploaded dataset.
 """)
 
+skip_rest = False
+
 st.sidebar.subheader("Download Test Dataset")
 try:
     with open("data/adult.test", "rb") as f:
@@ -29,7 +31,7 @@ try:
         mime="text/csv"
     )
 
-    st.stop()
+    skip_rest = True
 except FileNotFoundError:
     st.warning("Test dataset not found in repository.")
 
@@ -73,67 +75,68 @@ model_choice = st.selectbox(
 # Run Model
 results = None
 
-if model_choice == "Logistic Regression":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for Logistic Regression on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for Logistic Regression")
-    results = run_logistic_regression(X_train, X_test, y_train, y_test)
-elif model_choice == "Decision Tree Classifier":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for Decision Tree Classifier on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for Decision Tree Classifier")
-    results = run_decision_tree(X_train, X_test, y_train, y_test)
-elif model_choice == "K-Nearest Neighbor Classifier":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for K-Nearest Neighbor Classifier on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for K-Nearest Neighbor Classifier")
-    results = run_knn(X_train, X_test, y_train, y_test)
-elif model_choice == "Naive Bayes Classifier":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for Naive Bayes Classifier on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for Naive Bayes Classifier")
-    results = run_naive_bayes(X_train, X_test, y_train, y_test)
-elif model_choice == "Ensemble Model - Random Forest":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for Ensemble Model - Random Forest on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for Ensemble Model - Random Forest")
-    results = run_random_forest(X_train, X_test, y_train, y_test)
-elif model_choice == "Ensemble Model - XGBoost":
-    if uploaded_test_file:
-        st.subheader("Running evaluation for Ensemble Model - XGBoost on uploaded test dataset")
-    else:
-        st.subheader("Running evaluation for Ensemble Model - XGBoost")
-    results = run_xgboost(X_train, X_test, y_train, y_test)
+if not skip_rest:
+    if model_choice == "Logistic Regression":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for Logistic Regression on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for Logistic Regression")
+        results = run_logistic_regression(X_train, X_test, y_train, y_test)
+    elif model_choice == "Decision Tree Classifier":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for Decision Tree Classifier on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for Decision Tree Classifier")
+        results = run_decision_tree(X_train, X_test, y_train, y_test)
+    elif model_choice == "K-Nearest Neighbor Classifier":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for K-Nearest Neighbor Classifier on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for K-Nearest Neighbor Classifier")
+        results = run_knn(X_train, X_test, y_train, y_test)
+    elif model_choice == "Naive Bayes Classifier":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for Naive Bayes Classifier on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for Naive Bayes Classifier")
+        results = run_naive_bayes(X_train, X_test, y_train, y_test)
+    elif model_choice == "Ensemble Model - Random Forest":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for Ensemble Model - Random Forest on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for Ensemble Model - Random Forest")
+        results = run_random_forest(X_train, X_test, y_train, y_test)
+    elif model_choice == "Ensemble Model - XGBoost":
+        if uploaded_test_file:
+            st.subheader("Running evaluation for Ensemble Model - XGBoost on uploaded test dataset")
+        else:
+            st.subheader("Running evaluation for Ensemble Model - XGBoost")
+        results = run_xgboost(X_train, X_test, y_train, y_test)
 
     
-# Display Metrics
+    # Display Metrics
 
 
-col1, col2, col3 = st.columns(3)
-col1.metric("Accuracy", f"{results['accuracy']:.4f}")
-col2.metric("AUC Score", f"{results['auc']:.4f}")
-col3.metric("Precision", f"{results['precision']:.4f}")
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Accuracy", f"{results['accuracy']:.4f}")
+    col2.metric("AUC Score", f"{results['auc']:.4f}")
+    col3.metric("Precision", f"{results['precision']:.4f}")
 
-col4, col5, col6 = st.columns(3)
-col4.metric("Recall", f"{results['recall']:.4f}")
-col5.metric("F1 Score", f"{results['f1']:.4f}")
-col6.metric("MCC", f"{results['mcc']:.4f}")
+    col4, col5, col6 = st.columns(3)
+    col4.metric("Recall", f"{results['recall']:.4f}")
+    col5.metric("F1 Score", f"{results['f1']:.4f}")
+    col6.metric("MCC", f"{results['mcc']:.4f}")
 
-# Confusion Matrix
-st.subheader("Confusion Matrix")
-st.write(results["confusion_matrix"])
+    # Confusion Matrix
+    st.subheader("Confusion Matrix")
+    st.write(results["confusion_matrix"])
 
-# Display classification report
-st.subheader("Classification Report")
-report_dict = results["classification_report"]
+    # Display classification report
+    st.subheader("Classification Report")
+    report_dict = results["classification_report"]
 
-# Convert to DataFrame
-report_df = pd.DataFrame(report_dict).transpose()
-report_df = report_df.round(4)
+    # Convert to DataFrame
+    report_df = pd.DataFrame(report_dict).transpose()
+    report_df = report_df.round(4)
 
-st.dataframe(report_df, use_container_width=True)
+    st.dataframe(report_df, use_container_width=True)
