@@ -17,6 +17,8 @@ st.markdown("""
 * If a test file is uploaded, evaluation will run on the uploaded dataset.
 """)
 
+run_models = True
+
 st.sidebar.subheader("Download Test Dataset")
 try:
     with open("data/adult.test", "rb") as f:
@@ -29,7 +31,7 @@ try:
         mime="text/csv"
     )
 
-    skip_rest = True
+    run_models = False
 except FileNotFoundError:
     st.warning("Test dataset not found in repository.")
 
@@ -73,7 +75,7 @@ model_choice = st.selectbox(
 # Run Model
 results = None
 
-if not skip_rest:
+if run_models:
     if model_choice == "Logistic Regression":
         if uploaded_test_file:
             st.subheader("Running evaluation for Logistic Regression on uploaded test dataset")
