@@ -17,8 +17,6 @@ st.markdown("""
 * If a test file is uploaded, evaluation will run on the uploaded dataset.
 """)
 
-skip_rest = False
-
 st.sidebar.subheader("Download Test Dataset")
 try:
     with open("data/adult.test", "rb") as f:
